@@ -41,7 +41,7 @@ async def add_book(book: Book):
     
     data["books"].append(book.model_dump())
     
-    with open("src/fastapiprac/data.json", "w", encoding="utf-8") as f:
+    with open("src/pz8/data.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     
     return book
@@ -52,7 +52,7 @@ async def delete_book(book_id: int):
         if book["id"] == book_id:
             deleted_book = data["books"].pop(i)
             
-            with open("src/fastapiprac/data.json", "w", encoding="utf-8") as f:
+            with open("src/pz8/data.json", "w", encoding="utf-8") as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
             
             return {"message": f"Book with id {book_id} deleted successfully", "deleted_book": deleted_book}
@@ -65,7 +65,7 @@ async def update_book(book_id: int, updated_book: Book):
         if book["id"] == book_id:
             data["books"][i] = updated_book.model_dump()
             
-            with open("src/fastapiprac/data.json", "w", encoding="utf-8") as f:
+            with open("src/pz8/data.json", "w", encoding="utf-8") as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
             
             return updated_book
